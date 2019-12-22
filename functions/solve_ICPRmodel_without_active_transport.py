@@ -1,9 +1,8 @@
 from ICPRmodel.ICPRmodel import *
-from ICPRmodel.somatic_injection_current import *
 from scipy.integrate import solve_ivp
 from print_initial_values import *
 
-def solve_ICPRmodel(t_dur, alpha, I_stim, stim_start, stim_end):
+def solve_ICPRmodel_without_active_transport(t_dur, alpha):
 
     T = 309.14
 
@@ -59,13 +58,14 @@ def solve_ICPRmodel(t_dur, alpha, I_stim, stim_start, stim_end):
         Na_si, Na_se, Na_di, Na_de, K_si, K_se, K_di, K_de, Cl_si, Cl_se, Cl_di, Cl_de, Ca_si, Ca_se, Ca_di, Ca_de, k_res_si, k_res_se, k_res_di, k_res_de, n, h, s, c, q, z = k
 
         my_cell = ICPRmodel(T, Na_si, Na_se, Na_di, Na_de, K_si, K_se, K_di, K_de, Cl_si, Cl_se, Cl_di, Cl_de, Ca_si, Ca_se, Ca_di, Ca_de, k_res_si, k_res_se, k_res_di, k_res_de, alpha, Ca_si0, Ca_di0, n, h, s, c, q, z)
+        my_cell.rho = 0.
+        my_cell.U_kcc2 = 0.
+        my_cell.U_nkcc1 = 0.
+        my_cell.tau = 0.
 
         dNadt_si, dNadt_se, dNadt_di, dNadt_de, dKdt_si, dKdt_se, dKdt_di, dKdt_de, dCldt_si, dCldt_se, dCldt_di, dCldt_de, \
             dCadt_si, dCadt_se, dCadt_di, dCadt_de, dresdt_si, dresdt_se, dresdt_di, dresdt_de = my_cell.dkdt()
         dndt, dhdt, dsdt, dcdt, dqdt, dzdt = my_cell.dmdt()
-
-        if t > stim_start and t < stim_end:
-            dKdt_si, dKdt_se = somatic_injection_current(my_cell, dKdt_si, dKdt_se, 1.0, I_stim)
 
         return dNadt_si, dNadt_se, dNadt_di, dNadt_de, dKdt_si, dKdt_se, dKdt_di, dKdt_de, \
             dCldt_si, dCldt_se, dCldt_di, dCldt_de, dCadt_si, dCadt_se, dCadt_di, dCadt_de, \
