@@ -16,7 +16,7 @@ sol = solve_originalPRmodel(t_dur, g_c, I_stim, stim_start, stim_end)
 Vs, Vd, n, h, s, c, q, Ca = sol.y
 t = sol.t
 
-print('elapsed time: ', round(time.time() - start_time, 1), 'seconds')
+#print('elapsed time: ', round(time.time() - start_time, 1), 'seconds')
 
 # plot
 f1 = plt.figure(1)
