@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings("ignore", message="numpy.dtype size changed")
+warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
 from ICPRmodel.ICPRmodel import *
 from scipy.integrate import solve_ivp
 from functions.print_initial_values import *
