@@ -1,6 +1,6 @@
 from ICPRmodel.ICPRmodel import *
 from scipy.integrate import solve_ivp
-from print_initial_values import *
+from functions.print_initial_values import *
 
 def solve_ICPRmodel_without_active_transport(t_dur, alpha):
 
