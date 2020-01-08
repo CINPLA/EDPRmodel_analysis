@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings("ignore", message="numpy.dtype size changed")
+warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
 from ICPRmodel.ICPRmodel import *
 from ICPRmodel.somatic_injection_current import *
 from scipy.integrate import solve_ivp
