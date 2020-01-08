@@ -3,6 +3,17 @@ from scipy.integrate import solve_ivp
 from functions.print_initial_values import *
 
 def solve_ICPRmodel_without_active_transport(t_dur, alpha):
+    """
+    Solves the ICPR model using the solve_ivp function from scipy
+    when all homeostatic mechanisms are turned off.
+
+    Arguments:
+        t_dur (float): duration of simulation [s]
+        alpha (float): coupling strength
+
+    Returns:
+        sol: solution from solve_ivp
+    """
 
     T = 309.14
 

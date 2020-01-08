@@ -1,6 +1,11 @@
 import matplotlib.pyplot as plt
 
 def calculate_phiVC_and_phidiff(my_cell, phi_se, phi_de):
+    """
+    Calculates the extracellular potential, split into a component
+    explained by standard VC-theory (phi_vc) and a "correction" phi_diff
+    when diffusive contributions are accounted for.
+    """
 
     I_e_diff = my_cell.F * (my_cell.Z_Na*my_cell.j_k_diff(my_cell.D_Na, my_cell.lamda_e, my_cell.Na_se, my_cell.Na_de) \
     + my_cell.Z_K*my_cell.j_k_diff(my_cell.D_K, my_cell.lamda_e, my_cell.K_se, my_cell.K_de) \

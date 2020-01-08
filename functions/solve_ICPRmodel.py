@@ -4,6 +4,19 @@ from scipy.integrate import solve_ivp
 from functions.print_initial_values import *
 
 def solve_ICPRmodel(t_dur, alpha, I_stim, stim_start, stim_end):
+    """
+    Solves the ICPR model using the solve_ivp function from scipy.
+
+    Arguments:
+        t_dur (float): duration of simulation [s]
+        alpha (float): coupling strength
+        I_stim (float): stimulus current [s]
+        stim_start (float): time of stimulus onset [s]
+        stim_end (float): time of stimulus offset [s]
+
+    Returns:
+        sol: solution from solve_ivp
+    """
 
     T = 309.14
 

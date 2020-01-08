@@ -2,6 +2,10 @@ from scipy.constants import N_A
 from scipy import integrate
 
 def calculate_ATP(my_cell, t):
+    """
+    Calculates the accumulative number of ATP molecules
+    consumed by the 3Na/2K pumps and Ca/2Na exchangers.
+    """
 
     j_pump_s = my_cell.j_pump(my_cell.Na_si, my_cell.K_se)
     j_pump_d = my_cell.j_pump(my_cell.Na_di, my_cell.K_de)

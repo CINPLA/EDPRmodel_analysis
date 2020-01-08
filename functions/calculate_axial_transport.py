@@ -3,6 +3,10 @@ import scipy
 from scipy.constants import N_A
 
 def calculate_axial_transport(my_cell, t):
+    """
+    Calculates the number of ions transported intra- and extracellularly
+    from soma to dendrite by electrical drift versus ionic diffusion.
+    """
 
     phi_si, phi_se, phi_di, phi_de, phi_sm, phi_dm = my_cell.membrane_potentials()
 
