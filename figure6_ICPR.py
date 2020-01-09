@@ -9,11 +9,11 @@ from functions.calculate_ATP import *
 
 start_time = time.time()
 
-t_dur = 200        # [s]
+t_dur = 200       # [s]
 alpha = 2.0
 I_stim = 46e-12   # [A]
 stim_start = 10   # [s]
-stim_end = 201   # [s]
+stim_end = 201    # [s]
 
 sol = solve_ICPRmodel(t_dur, alpha, I_stim, stim_start, stim_end)
 
@@ -42,7 +42,7 @@ plt.legend(loc='upper right')
 sigma_i, sigma_e = calculate_sigma(my_cell, t)
 ATP_pump, ATP_Ca = calculate_ATP(my_cell, t)
 
- save to file
+# save to file
 np.savez('data/figure6_ICPR', t=t, phi_si=phi_si, phi_se=phi_se, phi_di=phi_di, phi_de=phi_de, phi_sm=phi_sm, phi_dm=phi_dm, \
     E_Na_s=E_Na_s, E_Na_d=E_Na_d, E_K_s=E_K_s, E_K_d=E_K_d, E_Cl_s=E_Cl_s, E_Cl_d=E_Cl_d, E_Ca_s=E_Ca_s, E_Ca_d=E_Ca_d, \
     Na_si=Na_si, Na_se=Na_se, Na_di=Na_di, Na_de=Na_de, K_si=K_si, K_se=K_se, K_di=K_di, K_de=K_de, Cl_si=Cl_si, Cl_se=Cl_se, Cl_di=Cl_di, Cl_de=Cl_de, \
