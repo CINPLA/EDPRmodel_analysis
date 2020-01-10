@@ -1,6 +1,4 @@
 *.pyc
 *.mat
-*.npz
 *.swp
 *.svg
-*.h5
