@@ -4,7 +4,7 @@ This code was used to produce the results presented in Sætra et al. 202X: [link
 
 # Installation
 
-To install the code in this repo, clone or download the repo, navigate to the top directory of the repo and enter the following command
+To install the code, clone or download the repo, navigate to the top directory of the repo and enter the following command
 in the terminal: 
 ```bash
 python setup.py install
