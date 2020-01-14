@@ -119,4 +119,4 @@ for i in range(5):
 
 fig.align_ylabels(axarr[:,0])
 plt.tight_layout()
-plt.savefig('figures_pdf/figure8.pdf', dpi=300)
+plt.savefig('figures_pdf/figure9.pdf', dpi=300)

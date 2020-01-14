@@ -82,4 +82,4 @@ for i in range(0,4):
 
 fig.set_facecolor('w')
 plt.tight_layout()
-plt.savefig('figures_pdf/figure4.pdf', dpi=300)
+plt.savefig('figures_pdf/figure5.pdf', dpi=300)
