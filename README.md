@@ -22,6 +22,8 @@ The code was run with Ubuntu 18.04.3.
 
 # Reproducing the results of the paper
 
-To reproduce the results of the paper, create a folder named data and run `run_all.sh`. To plot and save the figures, run 
-`plot_all.sh` in the folder named figures. The folder named sensitivity_analysis includes code
-needed to run the sensitivity analysis presented in the appendix. 
+To reproduce the results of the paper, except the sensitivity analysis presented in Figure 4,
+create a folder named data and run `run_all.sh`. To plot and save the figures, run 
+`plot_all.sh` in the folder named figures.
+The folder named sensitivity_analysis includes code
+needed to run the sensitivity analysis. 
