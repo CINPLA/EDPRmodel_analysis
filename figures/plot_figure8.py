@@ -4,119 +4,150 @@ import matplotlib.gridspec as gridspec
 from set_style import set_style
 
 set_style('article', w=1, h=3)
-fig, axarr = plt.subplots(5,2, sharex='col')
 
 data = np.load('../data/figure8.npz')
 
-t = data['t']
+t = data['t']/60.
+phi_sm = data['phi_sm']*1000
+phi_dm = data['phi_dm']*1000
+E_Na_s = data['E_Na_s']*1000
+E_Na_d = data['E_Na_d']*1000
+E_K_s = data['E_K_s']*1000
+E_K_d = data['E_K_d']*1000
+E_Cl_s = data['E_Cl_s']*1000
+E_Cl_d = data['E_Cl_d']*1000
+E_Ca_s = data['E_Ca_s']*1000
+E_Ca_d = data['E_Ca_d']*1000
+Na_si = data['Na_si']
+Na_se = data['Na_se']
+Na_di = data['Na_di']
+Na_de = data['Na_de']
+K_si = data['K_si']
+K_se = data['K_se']
+K_di = data['K_di']
+K_de = data['K_de']
+Cl_si = data['Cl_si']
+Cl_se = data['Cl_se']
+Cl_di = data['Cl_di']
+Cl_de = data['Cl_de']
+Ca_si = data['Ca_si']
+Ca_se = data['Ca_se']
+Ca_di = data['Ca_di']
+Ca_di = data['Ca_di']
+Ca_de = data['Ca_de']
 
-e_akkum_drift_e = data['e_akkum_drift_e']
-e_akkum_diff_e = data['e_akkum_diff_e']
-Na_akkum_drift_e = data['Na_akkum_drift_e']
-Na_akkum_diff_e = data['Na_akkum_diff_e']
-K_akkum_drift_e = data['K_akkum_drift_e']
-K_akkum_diff_e = data['K_akkum_diff_e']
-Cl_akkum_drift_e = data['Cl_akkum_drift_e']
-Cl_akkum_diff_e = data['Cl_akkum_diff_e']
-Ca_akkum_drift_e = data['Ca_akkum_drift_e']
-Ca_akkum_diff_e = data['Ca_akkum_diff_e']
+fig = plt.figure()
+gs = gridspec.GridSpec(4, 4)
+ax0 = plt.subplot(gs[0,:])
+ax1 = plt.subplot(gs[1,0:2])
+ax2 = plt.subplot(gs[1,2:])
+ax3 = plt.subplot(gs[2,0:2])
+ax4 = plt.subplot(gs[2,2:])
+ax5 = plt.subplot(gs[3,0:2])
+ax6 = plt.subplot(gs[3,2:])
 
-e_akkum_drift_i = data['e_akkum_drift_i']
-e_akkum_diff_i = data['e_akkum_diff_i']
-Na_akkum_drift_i = data['Na_akkum_drift_i']
-Na_akkum_diff_i = data['Na_akkum_diff_i']
-K_akkum_drift_i = data['K_akkum_drift_i']
-K_akkum_diff_i = data['K_akkum_diff_i']
-Cl_akkum_drift_i = data['Cl_akkum_drift_i']
-Cl_akkum_diff_i = data['Cl_akkum_diff_i']
-Ca_akkum_drift_i = data['Ca_akkum_drift_i']
-Ca_akkum_diff_i = data['Ca_akkum_diff_i']
+from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 
-### Panel A1 ###
-l1 = axarr[0,0].plot(t, Na_akkum_drift_i, zorder=10)[0]
-l2 = axarr[0,0].plot(t, Na_akkum_diff_i, zorder=10)[0]
-axarr[0,0].set_title('Axial transport ICS \n $\mathrm{Na^+}$')
-axarr[0,0].set_ylabel('N')
-axarr[0,0].spines['bottom'].set_position('zero')
-fig.legend([l1, l2], ['drift', 'diffusion'], \
-    loc=(0.37,0.81), fontsize='small', handlelength=1.2, handletextpad=0.4)
+### Panel A ###
+l1 = ax0.plot(t*60, phi_sm, ls='-', lw=1, color='k')[0]
+ax0.set_title('$\phi\mathrm{_{sm}}$')
+ax0.set_ylabel('mV')
+ax0.set_yticks([-65, -20, 0])
+ax0.set_xlabel('time [s]')
+axin0 = inset_axes(ax0, width="40%", height="40%", bbox_to_anchor=(0.01, 0.5, 1., 1.), bbox_transform=ax0.transAxes, loc=3)
+axin0.plot(t*60, phi_sm, ls='-', color='k')
+axin0.set_ylim(-70, 20)
+axin0.set_xlim(30.2, 31.2)
+axin0.yaxis.set_label_position('right')
+axin0.yaxis.tick_right()
+axin0.tick_params(axis='y', labelsize=6, pad=1)
+axin0.set_yticks([-65,-20,0])
+axin0.tick_params(axis='x', labelsize=6)
 
-### Panel A2 ###
-axarr[1,0].plot(t, K_akkum_drift_i, zorder=10)[0]
-axarr[1,0].plot(t, K_akkum_diff_i, zorder=10)[0]
-axarr[1,0].set_title('$\mathrm{K^+}$')
-axarr[1,0].set_ylabel('N')
-axarr[1,0].spines['bottom'].set_position('zero')
+### Panel B ###
+l1 = ax1.plot(t, E_K_s, lw=3, ls='-', zorder=10)[0]
+l2 = ax1.plot(t, E_Na_s, lw=3, ls=':', zorder=10)[0]
+l3 = ax1.plot(t, E_Cl_s, lw=2, ls='--', zorder=10)[0]
+l4 = ax1.plot(t, E_Ca_s, lw=3, ls='-', zorder=10)[0]
+ax1.set_title('$E\mathrm{_{k,s}}$')
+ax1.set_ylabel('mV')
+ax1.spines['bottom'].set_position('zero')
+ax1.set_yticks([-20, 100])
+ax1.set_xticklabels([])
+fig.legend([l2, l1, l3, l4], ['$E\mathrm{_{Na}}$', '$E\mathrm{_K}$', '$E\mathrm{_{Cl}}$', '$E\mathrm{_{Ca}}$'], \
+    loc=(0.41,0.48), ncol=2, fontsize='small', handlelength=1, handletextpad=0.4, columnspacing=0.4)
 
-### Panel A3 ###
-axarr[2,0].plot(t, Cl_akkum_drift_i, zorder=10)[0]
-axarr[2,0].plot(t, Cl_akkum_diff_i, zorder=10)[0]
-axarr[2,0].set_title('$\mathrm{Cl^-}$')
-axarr[2,0].set_ylabel('N')
-axarr[2,0].spines['bottom'].set_position('zero')
+### Panel C ###
+ax2.plot(t, E_K_d, lw=3, ls='-', zorder=10)
+ax2.plot(t, E_Na_d, lw=3, ls=':', zorder=10)
+ax2.plot(t, E_Cl_d, lw=2, ls='--', zorder=10)
+ax2.plot(t, E_Ca_d, lw=3, ls='-', zorder=9)
+ax2.set_title('$E\mathrm{_{k,d}}$')
+ax2.set_ylabel('mV')
+ax2.spines['bottom'].set_position('zero')
+ax2.set_yticks([-20, 100])
+ax2.set_xticklabels([])
 
-#### Panel A4 ###
-axarr[3,0].plot(t, Ca_akkum_drift_i, zorder=10)[0]
-axarr[3,0].plot(t, Ca_akkum_diff_i, zorder=10)[0]
-axarr[3,0].set_title('$\mathrm{Ca^{2+}}$')
-axarr[3,0].set_ylabel('N')
-axarr[3,0].spines['bottom'].set_position('zero')
+### Panel D ###
+l1 = ax3.plot(t, Na_si, lw=3, ls='-', zorder=10)[0]
+l2 = ax3.plot(t, Na_se, lw=3, ls='-', zorder=10)[0]
+l3 = ax3.plot(t, Na_di, lw=2.5, ls=':', zorder=10)[0]
+l4 = ax3.plot(t, Na_de, lw=2.5, ls=':', zorder=10)[0]
+ax3.set_title('$[\mathrm{Na^+}]$')
+ax3.set_ylabel('mM')
+ax3.set_xticklabels([])
+fig.legend([l1, l2, l3, l4], ['$\mathrm{[k]_s^i}$', '$\mathrm{[k]_s^e}$', '$\mathrm{[k]_d^i}$', '$\mathrm{[k]_d^e}$'], \
+    loc=(0.41,0.22), ncol=2, fontsize='small', handlelength=1, handletextpad=0.4, columnspacing=0.4)
 
-### Panel A5 ###
-axarr[4,0].plot(t, e_akkum_drift_i, zorder=10)
-axarr[4,0].plot(t, e_akkum_diff_i, zorder=10)
-axarr[4,0].set_title('$\mathrm{e^+}$')
-axarr[4,0].set_ylabel('N')
-axarr[4,0].set_xlabel('time [s]')
-axarr[4,0].set_xlim(0,30)
-axarr[4,0].set_xticks([0,10,20,30])
+### Panel E ###
+ax4.plot(t, K_si, lw=3, ls='-', zorder=10)[0]
+ax4.plot(t, K_se, lw=3, ls='-', zorder=10)[0]
+ax4.plot(t, K_di, lw=2.5, ls=':', zorder=10)[0]
+ax4.plot(t, K_de, lw=2.5, ls=':', zorder=10)[0]
+ax4.set_title('$[\mathrm{K^+}]$')
+ax4.set_ylabel('mM')
+ax4.set_xticklabels([])
 
-### Panel B1 ###
-l1 = axarr[0,1].plot(t, Na_akkum_drift_e, zorder=10)[0]
-l2 = axarr[0,1].plot(t, Na_akkum_diff_e, zorder=10)[0]
-axarr[0,1].set_title('Axial transport ECS \n $\mathrm{Na^+}$')
-axarr[0,1].spines['bottom'].set_position('zero')
+### Panel F ###
+ax5.plot(t, Cl_si, lw=3, ls='-', zorder=10)[0]
+ax5.plot(t, Cl_se, lw=3, ls='-', zorder=10)[0]
+ax5.plot(t, Cl_di, lw=2.5, ls=':', zorder=10)[0]
+ax5.plot(t, Cl_de, lw=2.5, ls=':', zorder=10)[0]
+ax5.set_title('$[\mathrm{Cl^-}]$')
+ax5.set_ylabel('mM')
+ax5.set_xlabel('time [min]')
 
-### Panel B2 ###
-axarr[1,1].plot(t, K_akkum_drift_e, zorder=10)[0]
-axarr[1,1].plot(t, K_akkum_diff_e, zorder=10)[0]
-axarr[1,1].set_title('$\mathrm{K^+}$')
-axarr[1,1].spines['bottom'].set_position('zero')
+#### Panel G ###
+ax6.plot(t, Ca_si, lw=3, ls='-', zorder=10)[0]
+ax6.plot(t, Ca_se, lw=3, ls='-', zorder=10)[0]
+ax6.plot(t, Ca_di, lw=2.5, ls=':', zorder=10)[0]
+ax6.plot(t, Ca_de, lw=2.5, ls=':', zorder=10)[0]
+ax6.set_title('$[\mathrm{Ca^{2+}}]$')
+ax6.set_ylabel('mM')
+ax6.set_xlabel('time [min]')
+ax6.set_ylim(0,1.2)
 
-### Panel B3 ###
-axarr[2,1].plot(t, Cl_akkum_drift_e, zorder=10)[0]
-axarr[2,1].plot(t, Cl_akkum_diff_e, zorder=10)[0]
-axarr[2,1].set_title('$\mathrm{Cl^-}$')
-axarr[2,1].spines['bottom'].set_position('zero')
-
-#### Panel B4 ###
-axarr[3,1].plot(t, Ca_akkum_drift_e, zorder=10)[0]
-axarr[3,1].plot(t, Ca_akkum_diff_e, zorder=10)[0]
-axarr[3,1].set_title('$\mathrm{Ca^{2+}}$')
-axarr[3,1].spines['bottom'].set_position('zero')
-
-### Panel B5 ###
-axarr[4,1].plot(t, e_akkum_drift_e, zorder=10)
-axarr[4,1].plot(t, e_akkum_diff_e, zorder=10)
-axarr[4,1].set_title('$\mathrm{e^+}$')
-axarr[4,1].set_xlim(0,30)
-axarr[4,1].set_xticks([0,10,20,30])
-axarr[4,1].set_xlabel('time [s]')
+for ax in [ax3, ax4, ax5]:
+    ax.set_ylim(0,145)
 
 # remove top and right borders
-for i in range(5):
-    for j in range(2):
-        axarr[i,j].spines['top'].set_visible(False)
-        axarr[i,j].spines['right'].set_visible(False)
-        axarr[i,j].ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+ax0.set_xlim(0,60)
+ax0.spines['top'].set_visible(False)
+ax0.spines['right'].set_visible(False)
+for ax in [ax1, ax2, ax3, ax4, ax5, ax6]:
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.set_xlim(0,10)
 
-axarr[4,1].set_xticks([0, 10, 20, 30])
+axarr = [ax0, ax1, ax2, ax3, ax4, ax5, ax6]
+panel = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+for i in range(0,7):
+    if i == 4 or i == 6:
+        axarr[i].text(0.13, 1.32, panel[i], transform=axarr[i].transAxes, fontsize=16, fontweight='bold', va='top', ha='right')
+    else:
+        axarr[i].text(-0.09, 1.32, panel[i], transform=axarr[i].transAxes, fontsize=16, fontweight='bold', va='top', ha='right')
 
-panel = [['A1', 'B1'], ['A2', 'B2'], ['A3', 'B3'], ['A4', 'B4'], ['A5', 'B5']]
-for i in range(5):
-    for j in range(2):
-        axarr[i,j].text(-0.05, 1.35, panel[i][j], transform=axarr[i,j].transAxes, fontsize=16, fontweight='bold', va='top', ha='right')
-
-fig.align_ylabels(axarr[:,0])
+fig.align_ylabels([ax1, ax3, ax5])
+fig.align_ylabels([ax2, ax4, ax6])
 plt.tight_layout()
-plt.savefig('figures_pdf/figure8.pdf', dpi=300)
+plt.savefig('figures_pdf/figure7.pdf', dpi=300)

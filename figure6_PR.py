@@ -1,17 +1,17 @@
 import numpy as np
 import time
 import matplotlib.pyplot as plt
-from originalPRmodel import solve_originalPRmodel
+from PRmodel import solve_PRmodel
 
 start_time = time.time()
 
-t_dur = 200e3      # [ms]
-g_c = 10.5         # [mS/cm^2] Strong
-I_stim = 1.55      # [uA/cm^2]
-stim_start = 10e3  # [ms]
-stim_end = 201e3   # [ms]
+t_dur = 3600e3      # [ms]
+g_c = 10.5        # [mS/cm^2] Strong
+I_stim = 0.78      # [uA/cm^2]
+stim_start = 10e3 # [ms]
+stim_end = 3601e3   # [ms]
 
-sol = solve_originalPRmodel(t_dur, g_c, I_stim, stim_start, stim_end)
+sol = solve_PRmodel(t_dur, g_c, I_stim, stim_start, stim_end)
 
 Vs, Vd, n, h, s, c, q, Ca = sol.y
 t = sol.t

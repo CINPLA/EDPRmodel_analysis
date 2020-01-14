@@ -15,8 +15,8 @@ Requirements are given in `requirements.txt` and can be installed by the followi
 pip install -r requirements.txt
 ```
 
-You must also have ICPRmodel and originalPRmodel installed. They can be downloaded from 
-[https://github.com/CINPLA/ICPRmodel](https://github.com/CINPLA/ICPRmodel) and [https://github.com/CINPLA/originalPRmodel](https://github.com/CINPLA/originalPRmodel), respectively.
+You must also have EDPRmodel and PRmodel installed. They can be downloaded from 
+[https://github.com/CINPLA/EDPRmodel](https://github.com/CINPLA/EDPRmodel) and [https://github.com/CINPLA/PRmodel](https://github.com/CINPLA/PRmodel), respectively.
 
 The code was run with Ubuntu 18.04.3. 
 

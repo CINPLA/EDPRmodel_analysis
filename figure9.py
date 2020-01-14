@@ -1,10 +1,10 @@
 import numpy as np
 import time
 import matplotlib.pyplot as plt
-from ICPRmodel.ICPRmodel import *
-from functions.solve_ICPRmodel import *
+from EDPRmodel.EDPRmodel import *
+from functions.solve_EDPRmodel import *
 from functions.print_final_values import *
-from functions.calculate_phiVC_and_phidiff import *
+from functions.calculate_axial_transport import *
 
 start_time = time.time()
 
@@ -14,13 +14,13 @@ I_stim = 28e-12 # [A]
 stim_start = 10 # [s]
 stim_end = 20   # [s]
 
-sol = solve_ICPRmodel(t_dur, alpha, I_stim, stim_start, stim_end)
+sol = solve_EDPRmodel(t_dur, alpha, I_stim, stim_start, stim_end)
 
 Na_si, Na_se, Na_di, Na_de, K_si, K_se, K_di, K_de, Cl_si, Cl_se, Cl_di, Cl_de, Ca_si, Ca_se, Ca_di, Ca_de, \
     k_res_si, k_res_se, k_res_di, k_res_de, n, h, s, c, q, z = sol.y
 t = sol.t
 
-my_cell = ICPRmodel(309.14, Na_si, Na_se, Na_di, Na_de, K_si, K_se, K_di, K_de, Cl_si, Cl_se, Cl_di, Cl_de, Ca_si, Ca_se, Ca_di, Ca_de, k_res_si, k_res_se, k_res_di, k_res_de, alpha, Ca_si[0], Ca_di[0], n, h, s, c, q, z)
+my_cell = EDPRmodel(309.14, Na_si, Na_se, Na_di, Na_de, K_si, K_se, K_di, K_de, Cl_si, Cl_se, Cl_di, Cl_de, Ca_si, Ca_se, Ca_di, Ca_de, k_res_si, k_res_se, k_res_di, k_res_de, alpha, Ca_si[0], Ca_di[0], n, h, s, c, q, z)
 #print_final_values(my_cell)
 
 phi_si, phi_se, phi_di, phi_de, phi_sm, phi_dm = my_cell.membrane_potentials()
@@ -38,8 +38,12 @@ plt.xlabel('time [s]')
 plt.ylabel('[mV]')
 plt.legend(loc='upper right')
 
-phi_diff, phi_vc = calculate_phiVC_and_phidiff(my_cell, phi_se, phi_de)
+j_e_drift_i, j_e_diff_i, e_akkum_drift_i, e_akkum_diff_i, Na_akkum_drift_i, Na_akkum_diff_i, K_akkum_drift_i, K_akkum_diff_i, Cl_akkum_drift_i, Cl_akkum_diff_i, Ca_akkum_drift_i, Ca_akkum_diff_i, j_e_drift_e, j_e_diff_e, e_akkum_drift_e, e_akkum_diff_e, Na_akkum_drift_e, Na_akkum_diff_e, K_akkum_drift_e, K_akkum_diff_e, Cl_akkum_drift_e, Cl_akkum_diff_e, Ca_akkum_drift_e, Ca_akkum_diff_e = calculate_axial_transport(my_cell, t)
 
-np.savez('data/figure9', t=t, phi_si=phi_si, phi_se=phi_se, phi_di=phi_di, phi_de=phi_de, phi_sm=phi_sm, phi_dm=phi_dm, phi_diff=phi_diff, phi_vc=phi_vc)
+np.savez('data/figure9', t=t, phi_si=phi_si, phi_se=phi_se, phi_di=phi_di, phi_de=phi_de, phi_sm=phi_sm, phi_dm=phi_dm, \
+    j_e_drift_i=j_e_drift_i, j_e_diff_i=j_e_diff_i, e_akkum_drift_i=e_akkum_drift_i, e_akkum_diff_i=e_akkum_diff_i, Na_akkum_drift_i=Na_akkum_drift_i, Na_akkum_diff_i=Na_akkum_diff_i, \
+    K_akkum_drift_i=K_akkum_drift_i, K_akkum_diff_i=K_akkum_diff_i, Cl_akkum_drift_i=Cl_akkum_drift_i, Cl_akkum_diff_i=Cl_akkum_diff_i, Ca_akkum_drift_i=Ca_akkum_drift_i, Ca_akkum_diff_i=Ca_akkum_diff_i, \
+    j_e_drift_e=j_e_drift_e, j_e_diff_e=j_e_diff_e, e_akkum_drift_e=e_akkum_drift_e, e_akkum_diff_e=e_akkum_diff_e, Na_akkum_drift_e=Na_akkum_drift_e, Na_akkum_diff_e=Na_akkum_diff_e, \
+    K_akkum_drift_e=K_akkum_drift_e, K_akkum_diff_e=K_akkum_diff_e, Cl_akkum_drift_e=Cl_akkum_drift_e, Cl_akkum_diff_e=Cl_akkum_diff_e, Ca_akkum_drift_e=Ca_akkum_drift_e, Ca_akkum_diff_e=Ca_akkum_diff_e)
 
 plt.show()
