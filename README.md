@@ -18,7 +18,7 @@ pip install -r requirements.txt
 You must also have EDPRmodel and PRmodel installed. They can be downloaded from 
 [https://github.com/CINPLA/EDPRmodel](https://github.com/CINPLA/EDPRmodel) and [https://github.com/CINPLA/PRmodel](https://github.com/CINPLA/PRmodel), respectively.
 
-The code was run with Ubuntu 18.04.3. 
+The code was run with Ubuntu 18.04.3 and Python 3.6.9.
 
 # Reproducing the results of the paper
 
