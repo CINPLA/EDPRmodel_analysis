@@ -1,6 +1,6 @@
 import uncertainpy as un
 import matplotlib.pyplot as plt
-from set_style import set_style
+from figures.set_style import set_style
 import numpy as np
 
 set_style('article', w=1, h=3)
