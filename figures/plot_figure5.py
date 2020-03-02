@@ -58,7 +58,7 @@ ax2.set_xlim([10.06,10.10])
 ### Panel C ###
 ax3.plot(EDPR_weak_t, EDPR_weak_sm*1000, 'k')
 ax3.plot(EDPR_weak_t, EDPR_weak_dm*1000, 'k:')
-ax3.set_xlim([17.56,17.60])
+ax3.set_xlim([18.52,18.56])
 ax3.set_ylabel('mV')
 ax3.set_xlabel('time [s]')
 
