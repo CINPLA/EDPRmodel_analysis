@@ -9,7 +9,7 @@ import pkg_resources
 def solve_EDPRmodel_without_active_transport(t_dur, alpha):
     """
     Solves the EDPR model using the solve_ivp function from scipy
-    when all homeostatic mechanisms are turned off.
+    when the ATP-dependent mechanisms are turned off.
 
     Arguments:
         t_dur (float): duration of simulation [s]
@@ -63,8 +63,6 @@ def solve_EDPRmodel_without_active_transport(t_dur, alpha):
 
         my_cell = EDPRmodel(T, Na_si, Na_se, Na_di, Na_de, K_si, K_se, K_di, K_de, Cl_si, Cl_se, Cl_di, Cl_de, Ca_si, Ca_se, Ca_di, Ca_de, k_res_si, k_res_se, k_res_di, k_res_de, alpha, 0.01, 0.01, n, h, s, c, q, z)
         my_cell.rho = 0.
-        my_cell.U_kcc2 = 0.
-        my_cell.U_nkcc1 = 0.
         my_cell.tau = 0.
 
         dNadt_si, dNadt_se, dNadt_di, dNadt_de, dKdt_si, dKdt_se, dKdt_di, dKdt_de, dCldt_si, dCldt_se, dCldt_di, dCldt_de, \
@@ -82,6 +80,5 @@ def solve_EDPRmodel_without_active_transport(t_dur, alpha):
         k_res_si0, k_res_se0, k_res_di0, k_res_de0, n0, h0, s0, c0, q0, z0]
 
     sol = solve_ivp(calibrate, t_span, k0, max_step=1e-4)
-
 
     return sol
