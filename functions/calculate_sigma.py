@@ -1,7 +1,7 @@
 
 def calculate_sigma(my_cell, t):
     """
-    Calculated the conductivity of the intra- and extracellular media
+    Calculates the conductivity of the intra- and extracellular media
     (sigma_i and sigma_e, respectively).
     """
 
