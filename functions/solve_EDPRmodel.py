@@ -58,7 +58,7 @@ def solve_EDPRmodel(t_dur, alpha, I_stim, stim_start, stim_end):
     z0 = data['z']
     
     init_cell = EDPRmodel(T, Na_si0, Na_se0, Na_di0, Na_de0, K_si0, K_se0, K_di0, K_de0, Cl_si0, Cl_se0, Cl_di0, Cl_de0, Ca_si0, Ca_se0, Ca_di0, Ca_de0, X_si0, X_se0, X_di0, X_de0, alpha, 0.01, 0.01, n0, h0, s0, c0, q0, z0)
-    print_initial_values(init_cell)
+    #print_initial_values(init_cell)
 
     def dkdt(t,k):
 
