@@ -6,7 +6,7 @@ from scipy.integrate import solve_ivp
 from functions.print_initial_values import *
 import pkg_resources
 
-def solve_EDPRmodel_without_active_transport(t_dur, alpha):
+def solve_EDPRmodel_WoD(t_dur, alpha):
     """
     Solves the EDPR model using the solve_ivp function from scipy
     when the ATP-dependent mechanisms are turned off.
@@ -42,10 +42,10 @@ def solve_EDPRmodel_without_active_transport(t_dur, alpha):
     Ca_di0 = data['Ca_di']
     Ca_de0 = data['Ca_de']
 
-    X_si0 = data['X_si'][-1]
-    X_se0 = data['X_se'][-1]
-    X_di0 = data['X_di'][-1]
-    X_de0 = data['X_de'][-1]
+    X_si0 = data['X_si']
+    X_se0 = data['X_se']
+    X_di0 = data['X_di']
+    X_de0 = data['X_de']
 
     n0 = data['n']
     h0 = data['h']

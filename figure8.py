@@ -2,7 +2,7 @@ import numpy as np
 import time
 import matplotlib.pyplot as plt
 from EDPRmodel.EDPRmodel import *
-from functions.solve_EDPRmodel_without_active_transport import *
+from functions.solve_EDPRmodel_WoD import *
 from functions.print_final_values import *
 from functions.calculate_sigma import *
 from functions.calculate_ATP import *
@@ -12,7 +12,7 @@ start_time = time.time()
 t_dur = 600      # [s]
 alpha = 2.0
 
-sol = solve_EDPRmodel_without_active_transport(t_dur, alpha)
+sol = solve_EDPRmodel_WoD(t_dur, alpha)
 
 Na_si, Na_se, Na_di, Na_de, K_si, K_se, K_di, K_de, Cl_si, Cl_se, Cl_di, Cl_de, Ca_si, Ca_se, Ca_di, Ca_de, \
     X_si, X_se, X_di, X_de, n, h, s, c, q, z = sol.y
