@@ -30,4 +30,4 @@ plt.legend(loc='upper right')
 # save to file
 np.savez('data/figure5_PR_weak', t=t, Vs=Vs, Vd=Vd, Ca=Ca)
 
-plt.show()
+#plt.show()

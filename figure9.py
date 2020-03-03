@@ -46,4 +46,4 @@ np.savez('data/figure9', t=t, phi_si=phi_si, phi_se=phi_se, phi_di=phi_di, phi_d
     j_e_drift_e=j_e_drift_e, j_e_diff_e=j_e_diff_e, e_akkum_drift_e=e_akkum_drift_e, e_akkum_diff_e=e_akkum_diff_e, Na_akkum_drift_e=Na_akkum_drift_e, Na_akkum_diff_e=Na_akkum_diff_e, \
     K_akkum_drift_e=K_akkum_drift_e, K_akkum_diff_e=K_akkum_diff_e, Cl_akkum_drift_e=Cl_akkum_drift_e, Cl_akkum_diff_e=Cl_akkum_diff_e, Ca_akkum_drift_e=Ca_akkum_drift_e, Ca_akkum_diff_e=Ca_akkum_diff_e)
 
-plt.show()
+#plt.show()

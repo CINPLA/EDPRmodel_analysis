@@ -42,4 +42,4 @@ phi_diff, phi_vc = calculate_phiVC_and_phidiff(my_cell, phi_se, phi_de)
 
 np.savez('data/figure10', t=t, phi_si=phi_si, phi_se=phi_se, phi_di=phi_di, phi_de=phi_de, phi_sm=phi_sm, phi_dm=phi_dm, phi_diff=phi_diff, phi_vc=phi_vc)
 
-plt.show()
+#plt.show()

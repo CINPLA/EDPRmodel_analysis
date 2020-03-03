@@ -47,4 +47,4 @@ np.savez('data/figure8', t=t, phi_si=phi_si, phi_se=phi_se, phi_di=phi_di, phi_d
     sigma_i=sigma_i, sigma_e=sigma_e, ATP_pump=ATP_pump, ATP_Ca=ATP_Ca, \
     n=n, h=h, s=s, c=c, q=q, z=z)
 
-plt.show()
+#plt.show()

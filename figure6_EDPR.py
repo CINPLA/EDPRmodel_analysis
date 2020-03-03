@@ -49,4 +49,4 @@ np.savez('data/figure6_EDPR', t=t, phi_si=phi_si, phi_se=phi_se, phi_di=phi_di, 
     Ca_si=Ca_si, Ca_se=Ca_se, Ca_di=Ca_di, Ca_de=Ca_de, free_Ca_di=my_cell.free_Ca_di, \
     sigma_i=sigma_i, sigma_e=sigma_e, ATP_pump=ATP_pump, ATP_Ca=ATP_Ca)
 
-plt.show()
+#plt.show()

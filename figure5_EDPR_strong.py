@@ -45,4 +45,4 @@ np.savez('data/figure5_EDPR_strong', t=t, phi_si=phi_si, phi_se=phi_se, phi_di=p
     Na_si=Na_si, Na_se=Na_se, Na_di=Na_di, Na_de=Na_de, K_si=K_si, K_se=K_se, K_di=K_di, K_de=K_de, Cl_si=Cl_si, Cl_se=Cl_se, Cl_di=Cl_di, Cl_de=Cl_de, \
     Ca_si=Ca_si, Ca_se=Ca_se, Ca_di=Ca_di, Ca_de=Ca_de, free_Ca_di=my_cell.free_Ca_di)
 
-plt.show()
+#plt.show()
