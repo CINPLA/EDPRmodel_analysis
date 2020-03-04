@@ -1,6 +1,6 @@
 import uncertainpy as un
 import chaospy as cp
-from wrapper_steady_state import pinskyrinzelpump
+from wrapper_sensitivity_analysis import pinskyrinzelpump
 
 # Initialize the model and add labels
 model = un.Model(run=pinskyrinzelpump, labels=["Time (s)", "Somatic membrane potential (mV)"], interpolate=True)
