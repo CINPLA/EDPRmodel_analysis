@@ -3,7 +3,6 @@ from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
 from EDPRmodel.EDPRmodel import *
 from EDPRmodel.somatic_injection_current import *
-import pkg_resources
 
 def pinskyrinzelpump(g_Na_leak,
                      g_K_leak,
@@ -15,8 +14,7 @@ def pinskyrinzelpump(g_Na_leak,
     T = 309.14
     alpha = 2.0
 
-    filename = pkg_resources.resource_filename('data', 'initial_values/initial_values.npz')
-    data = np.load(filename)
+    data = np.load('../data/initial_values/initial_values.npz')
 
     Na_si0 = data['Na_si']
     Na_se0 = data['Na_se']
