@@ -28,4 +28,4 @@ run `bash run_all.sh`. To plot and save the figures, run
 The folder named sensitivity_analysis includes code
 needed to run the sensitivity analysis. 
 
-If you have problems reading the .npz-files, install git lfs and try `git-lfs pull`.
+If you have problems reading the initial_values.npz-file, install git lfs and try `git-lfs pull`.
