@@ -57,7 +57,7 @@ def pinskyrinzelpump(g_Na_leak,
         Na_si, Na_se, Na_di, Na_de, K_si, K_se, K_di, K_de, Cl_si, Cl_se, Cl_di, Cl_de, Ca_si, Ca_se, Ca_di, Ca_de, \
             X_si, X_se, X_di, X_de, n, h, s, c, q, z = k
         my_cell = EDPRmodel(T, Na_si, Na_se, Na_di, Na_de, K_si, K_se, K_di, K_de, Cl_si, Cl_se, Cl_di, Cl_de, \
-            Ca_si, Ca_se, Ca_di, Ca_de, X_si, X_se, X_di, X_de, alpha, Ca_si0, Ca_di0, n, h, s, c, q, z)
+            Ca_si, Ca_se, Ca_di, Ca_de, X_si, X_se, X_di, X_de, alpha, 0.01, 0.01, n, h, s, c, q, z)
         
         my_cell.g_Na_leak = g_Na_leak
         my_cell.g_K_leak = g_K_leak
@@ -86,7 +86,7 @@ def pinskyrinzelpump(g_Na_leak,
     t = sol.t
 
     my_cell = EDPRmodel(T, Na_si, Na_se, Na_di, Na_de, K_si, K_se, K_di, K_de, Cl_si, Cl_se, Cl_di, Cl_de, \
-        Ca_si, Ca_se, Ca_di, Ca_de, X_si, X_se, X_di, X_de, alpha, Ca_si0, Ca_di0, n, h, s, c, q, z)
+        Ca_si, Ca_se, Ca_di, Ca_de, X_si, X_se, X_di, X_de, alpha, 0.01, 0.01, n, h, s, c, q, z)
     phi_si, phi_se, phi_di, phi_de, phi_sm, phi_dm = my_cell.membrane_potentials()
 
     return t, phi_sm*1000
@@ -94,6 +94,5 @@ def pinskyrinzelpump(g_Na_leak,
 if __name__ == "__main__":
     
     time, phi_sm = pinskyrinzelpump(0.247, 0.5, 1.0, 1.87e-6, 7.0e-7, 2.33e-7)
-    plt.plot(time, phi_sm*1000)
-    plt.ylim(-75, 0)
+    plt.plot(time, phi_sm)
     plt.show()
