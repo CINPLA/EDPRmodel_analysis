@@ -2,7 +2,6 @@ import numpy as np
 from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
 from EDPRmodel.EDPRmodel import *
-from EDPRmodel.somatic_injection_current import *
 
 def pinskyrinzelpump(g_Na_leak,
                      g_K_leak,
@@ -34,17 +33,20 @@ def pinskyrinzelpump(g_Na_leak,
     Ca_di0 = data['Ca_di']
     Ca_de0 = data['Ca_de']
 
-    X_si0 = data['X_si']
-    X_se0 = data['X_se']
-    X_di0 = data['X_di']
-    X_de0 = data['X_de']
-
     n0 = data['n']
     h0 = data['h']
     s0 = data['s']
     c0 = data['c']
     q0 = data['q']
     z0 = data['z']
+    
+    res_i = -68e-3*3e-2*616e-12/(1437e-18*9.648e4)
+    res_e = -68e-3*3e-2*616e-12/(718.5e-18*9.648e4)
+
+    X_si0 = Na_si0 + K_si0 - Cl_si0 + 2*Ca_si0 - res_i
+    X_se0 = Na_se0 + K_se0 - Cl_se0 + 2*Ca_se0 + res_e
+    X_di0 = Na_di0 + K_di0 - Cl_di0 + 2*Ca_di0 - res_i
+    X_de0 = Na_de0 + K_de0 - Cl_de0 + 2*Ca_de0 + res_e
 
     def dkdt(t, k,
              g_Na_leak,

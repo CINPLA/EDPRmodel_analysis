@@ -21,7 +21,7 @@ parameters = un.Parameters(parameters)
 parameters.set_all_distributions(un.uniform(0.3))
 
 # Perform the uncertainty quantification
-UQ = un.UncertaintyQuantification(model, parameters=parameters, CPUs=8)
+UQ = un.UncertaintyQuantification(model, parameters=parameters)
 
 # We set the seed to easier be able to reproduce the result
 data = UQ.quantify(seed=10)
