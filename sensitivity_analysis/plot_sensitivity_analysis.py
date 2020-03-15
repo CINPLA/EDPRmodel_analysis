@@ -37,4 +37,4 @@ ax1.text(-0.1, 1.1, 'A', transform=ax1.transAxes, fontsize=16, fontweight='bold'
 ax2.text(-0.1, 1.1, 'B', transform=ax2.transAxes, fontsize=16, fontweight='bold', va='top', ha='right')
 
 plt.tight_layout()
-plt.savefig('sensitivity_analysis.eps', dpi=600)
+plt.savefig('figure4.eps', dpi=600)
