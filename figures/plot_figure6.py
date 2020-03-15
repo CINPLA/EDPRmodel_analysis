@@ -43,8 +43,8 @@ Cl_di = data_EDPR['Cl_di'][0::1000]
 Cl_de = data_EDPR['Cl_de'][0::1000]
 Ca_si = data_EDPR['Ca_si'][0::1000]
 Ca_se = data_EDPR['Ca_se'][0::1000]
-Ca_di = data_EDPR['Ca_di'][0::1000]
-Ca_de = data_EDPR['Ca_de'][0::1000]
+Ca_di = data_EDPR['Ca_di']
+Ca_de = data_EDPR['Ca_de']
 
 ### Panel A ###
 ax1.plot(t_PR, phi_sm_PR, ls='-', color='k')
@@ -74,7 +74,7 @@ axin2.set_xlim(0, 3600)
 
 ### Panel C ###
 ax3.plot(t_phi, phi_sm, ls='-', color='k')
-ax3.set_title('EDPR $\phi\mathrm{_{sm}}$')
+ax3.set_title('edPR $\phi\mathrm{_{sm}}$')
 ax3.set_yticks([-65, 0])
 ax3.set_xlim(10,20)
 ax3.set_ylim(-75, 25)
@@ -87,7 +87,7 @@ axin3.set_xlim(0, 3600)
 
 ### Panel D ###
 ax4.plot(t_phi, free_Ca_EDPR*1e6, ls='-', color='k')
-ax4.set_title('EDPR free $\mathrm{[Ca^{2+}]_{di}}$')
+ax4.set_title('edPR free $\mathrm{[Ca^{2+}]_{di}}$')
 ax4.set_ylabel('nM')
 ax4.set_xlim(10,20)
 axin4 = inset_axes(ax4, width="40%", height="40%", bbox_to_anchor=(0.0, 0.5, 1., 1.), bbox_transform=ax4.transAxes, loc=3)
@@ -105,8 +105,8 @@ l4 = ax5.plot(data_EDPR['t'][0::10000], E_Ca_s)[0]
 ax5.set_title('$E\mathrm{_{k,s}}$')
 ax5.spines['bottom'].set_position('zero')
 fig.legend([l1, l2, l3, l4], ['$\mathrm{Na^+}$', '$\mathrm{K^+}$', '$\mathrm{Cl^-}$', '$\mathrm{Ca^{2+}}$'], \
-    loc=(0.38,0.38), ncol=2, fontsize='small', handlelength=1, handletextpad=0.4, columnspacing=0.4)
-ax5.set_yticks([-70, 0, 100])
+    loc=(0.4,0.56), ncol=2, fontsize='small', handlelength=1, handletextpad=0.4, columnspacing=0.4)
+ax5.set_yticks([-80, 0, 100])
 ax5.set_ylim(-80, 140)
 
 ### Panel F ###
@@ -116,44 +116,46 @@ l3 = ax6.plot(data_EDPR['t'][0::100], E_Cl_d)
 l4 = ax6.plot(data_EDPR['t'][0::100], E_Ca_d)
 ax6.set_title('$E\mathrm{_{k,d}}$')
 ax6.spines['bottom'].set_position('zero')
-ax6.set_yticks([-70, 0, 100])
+ax6.set_yticks([-80, 0, 100])
 ax6.set_ylim(-80, 140)
 
 ### Panel G ###
-ax7.plot(t, Na_si-Na_si[0], zorder=10)
-ax7.plot(t, K_si-K_si[0], zorder=10)
-ax7.plot(t, Cl_si-Cl_si[0], zorder=10)
-ax7.plot(t, Ca_si-Ca_si[0], zorder=10)
+l1 = ax7.plot(t, Na_si-Na_si[0], zorder=10)[0]
+l2 = ax7.plot(t, Na_se-Na_se[0], zorder=11)[0]
+l3 = ax7.plot(t, Na_di-Na_di[0], zorder=10)[0]
+l4 = ax7.plot(t, Na_de-Na_de[0], zorder=10)[0]
 ax7.spines['bottom'].set_position('zero')
-ax7.set_title('$\Delta\mathrm{[k]_{si}}$')
-ax7.set_ylim(-0.75, 1.75)
+ax7.set_title('$\Delta\mathrm{[Na^+]}$')
+ax7.set_ylim(-5, 2.5)
+fig.legend([l1, l2, l3, l4], ['si', 'se', 'di', 'de'], \
+    loc=(0.45,0.2), ncol=2, fontsize='small', handlelength=1, handletextpad=0.4, columnspacing=0.4)
 
 ### Panel H ###
-ax8.plot(t, Na_di-Na_di[0], zorder=10)
+ax8.plot(t, K_si-K_si[0], zorder=10)
+ax8.plot(t, K_se-K_se[0], zorder=10)
 ax8.plot(t, K_di-K_di[0], zorder=10)
-ax8.plot(t, Cl_di-Cl_di[0], zorder=10)
-ax8.plot(t, Ca_di-Ca_di[0], zorder=10)
+ax8.plot(t, K_de-K_de[0], zorder=10)
 ax8.spines['bottom'].set_position('zero')
-ax8.set_title('$\Delta\mathrm{[k]_{di}}$')
-ax8.set_ylim(-0.75, 1.75)
+ax8.set_title('$\Delta\mathrm{[K^+]}$')
+ax8.set_ylim(-1, 2)
 
 ### Panel I ###
-ax9.plot(t, Na_se-Na_se[0], zorder=10)
-ax9.plot(t, K_se-K_se[0], zorder=10)
+ax9.plot(t, Cl_si-Cl_si[0], zorder=10)
 ax9.plot(t, Cl_se-Cl_se[0], zorder=10)
-ax9.plot(t, Ca_se-Ca_se[0], zorder=10)
-ax9.set_title('$\Delta\mathrm{[k]_{se}}$')
+ax9.plot(t, Cl_di-Cl_di[0], ':', zorder=10)
+ax9.plot(t, Cl_de-Cl_de[0], ':', zorder=10)
+ax9.set_title('$\Delta\mathrm{[Cl^-]}$')
 ax9.set_xlabel('time [s]')
-ax9.set_ylim(-3.25, 1)
+ax9.set_ylim(-2.6, 1.3)
 
 ### Panel J ###
-ax10.plot(t, Na_de-Na_de[0], zorder=10)
-ax10.plot(t, K_de-K_de[0], zorder=10)
-ax10.plot(t, Cl_de-Cl_de[0], zorder=10)
-ax10.plot(t, Ca_de-Ca_de[0], zorder=10)
-ax10.set_title('$\Delta\mathrm{[k]_{de}}$')
+ax10.plot(t, Ca_si-Ca_si[0], '--', zorder=11)
+ax10.plot(t, Ca_se-Ca_se[0], zorder=10)
+ax10.plot(t_phi, Ca_di-Ca_di[0], zorder=9)
+ax10.plot(t_phi, Ca_de-Ca_de[0], zorder=9)
+ax10.set_title('$\Delta\mathrm{[Ca^{2+}]}$')
 ax10.set_xlabel('time [s]')
-ax10.set_ylim(-3.25, 1)
+ax10.set_ylim(-0.2, 0.1)
 
 ax9.set_xticks([0, 1800, 3600])
 ax10.set_xticks([0, 1800, 3600])
@@ -179,12 +181,12 @@ for ax in axarr:
 
 panel = np.array(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'])
 for i in range(0,10):
-    if i == 7:
-        axarr[i].text(-0.03, 1.38, panel[i], transform=axarr[i].transAxes, fontsize=16, fontweight='bold', va='top', ha='right')
+    if i == 5 or i==9:
+        axarr[i].text(0.13, 1.35, panel[i], transform=axarr[i].transAxes, fontsize=16, fontweight='bold', va='top', ha='right')
     else:
-        axarr[i].text(-0.1, 1.38, panel[i], transform=axarr[i].transAxes, fontsize=16, fontweight='bold', va='top', ha='right')
+        axarr[i].text(-0.1, 1.35, panel[i], transform=axarr[i].transAxes, fontsize=16, fontweight='bold', va='top', ha='right')
 
 
 fig.align_ylabels(axarr)
 plt.tight_layout()
-plt.savefig('figures_pdf/figure6.pdf', dpi=300)
+plt.savefig('figure6.eps', dpi=600)

@@ -36,7 +36,7 @@ for ax in big_axes:
     ax.spines['bottom'].set_visible(False)
 
 big_axes[0].set_title('Original PR Model')
-big_axes[1].set_title('EDPR Model')
+big_axes[1].set_title('edPR Model')
 
 ax1 = fig.add_subplot(2,2,1)
 ax2 = fig.add_subplot(2,2,2)
@@ -54,6 +54,7 @@ ax1.legend(fontsize='small', handlelength=0.8, handletextpad=0.4, loc='upper rig
 ax2.plot(PR_strong_t/1000, PR_strong_sm, 'k')
 ax2.plot(PR_strong_t/1000, PR_strong_dm, 'k:')
 ax2.set_xlim([10.06,10.10])
+ax2.set_xticks([10.06, 10.08, 10.10])
 
 ### Panel C ###
 ax3.plot(EDPR_weak_t, EDPR_weak_sm*1000, 'k')
@@ -82,4 +83,4 @@ for i in range(0,4):
 
 fig.set_facecolor('w')
 plt.tight_layout()
-plt.savefig('figures_pdf/figure5.pdf', dpi=300)
+plt.savefig('figure5.eps', dpi=600)

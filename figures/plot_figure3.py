@@ -67,7 +67,7 @@ axarr[1,0].set_title('$\phi\mathrm{_{se}}$')
 axarr[1,0].set_ylabel('mV')
 axarr[1,0].spines['top'].set_visible(False)
 axarr[1,0].spines['right'].set_visible(False)
-axarr[1,0].set_ylim(-6, 6)
+axarr[1,0].set_ylim(-8, 8)
 axarr[1,0].set_yticks([-5, 0, 5])
 
 ### Panel D ###
@@ -76,30 +76,30 @@ axarr[1,1].set_title('$\phi\mathrm{_{de}}$')
 axarr[1,1].set_ylabel('mV')
 axarr[1,1].spines['top'].set_visible(False)
 axarr[1,1].spines['right'].set_visible(False)
-axarr[1,1].set_ylim(-6, 6)
+axarr[1,1].set_ylim(-8, 8)
 axarr[1,1].set_yticks([-5, 0, 5])
 
 ### Panel E ###
 l1 = axarr[2,0].plot(t, Na_si-Na_si[0], zorder=10)[0]
-l2 = axarr[2,0].plot(t, K_si-K_si[0], zorder=10)[0]
-l3 = axarr[2,0].plot(t, Cl_si-Cl_si[0], zorder=10)[0]
-l4 = axarr[2,0].plot(t, Ca_si-Ca_si[0], zorder=10)[0]
-axarr[2,0].set_title('$\Delta \mathrm{[k]_{si}}$')
+l2 = axarr[2,0].plot(t, Na_se-Na_se[0], zorder=11)[0]
+l3 = axarr[2,0].plot(t, Na_di-Na_di[0], zorder=10)[0]
+l4 = axarr[2,0].plot(t, Na_de-Na_de[0], zorder=10)[0]
+axarr[2,0].set_title('$\Delta\mathrm{[Na^+]}$')
 axarr[2,0].set_ylabel('mM')
 axarr[2,0].spines['top'].set_visible(False)
 axarr[2,0].spines['right'].set_visible(False)
 axarr[2,0].spines['bottom'].set_position('zero')
-fig.legend([l1, l2, l3, l4], ['$\mathrm{Na^+}$', '$\mathrm{K^+}$', '$\mathrm{Cl^-}$', '$\mathrm{Ca^{2+}}$'], \
+fig.legend([l1, l2, l3, l4], ['si', 'se', 'di', 'de'], \
     loc=(0.43,0.48), ncol=2, fontsize='small', handlelength=0.8, handletextpad=0.4, columnspacing=0.4)
-axarr[2,0].set_ylim(-1, 1.5)
-axarr[2,0].set_yticks([0, 1])
+axarr[2,0].set_ylim(-2.5, 1.5)
+axarr[2,0].set_yticks([-2, 0])
 
 ### Panel F ###
-axarr[2,1].plot(t, Na_di-Na_di[0], zorder=10)
+axarr[2,1].plot(t, K_si-K_si[0], zorder=10)
+axarr[2,1].plot(t, K_se-K_se[0], zorder=10)
 axarr[2,1].plot(t, K_di-K_di[0], zorder=10)
-axarr[2,1].plot(t, Cl_di-Cl_di[0], zorder=10)
-axarr[2,1].plot(t, Ca_di-Ca_di[0], zorder=10)
-axarr[2,1].set_title('$\Delta \mathrm{[k]_{di}}$')
+axarr[2,1].plot(t, K_de-K_de[0], zorder=10)
+axarr[2,1].set_title('$\Delta\mathrm{[K^+]}$')
 axarr[2,1].set_ylabel('mM')
 axarr[2,1].spines['top'].set_visible(False)
 axarr[2,1].spines['right'].set_visible(False)
@@ -108,45 +108,47 @@ axarr[2,1].set_ylim(-1, 1.5)
 axarr[2,1].set_yticks([0, 1])
 
 ### Panel G ###
-axarr[3,0].plot(t, Na_se-Na_se[0], zorder=10)
-axarr[3,0].plot(t, K_se-K_se[0], zorder=10)
-axarr[3,0].plot(t, Cl_se-Cl_se[0], zorder=10)
-axarr[3,0].plot(t, Ca_se-Ca_se[0], zorder=10)
-axarr[3,0].set_title('$\Delta \mathrm{[k]_{se}}$')
+axarr[3,0].plot(t, Cl_si-Cl_si[0], zorder=10)
+axarr[3,0].plot(t, Cl_se-Cl_se[0], ':', zorder=11)
+axarr[3,0].plot(t, Cl_di-Cl_di[0], ':', zorder=10)
+axarr[3,0].plot(t, Cl_de-Cl_de[0], zorder=10)
+axarr[3,0].set_title('$\Delta\mathrm{[Cl^-]}$')
 axarr[3,0].set_ylabel('mM')
 axarr[3,0].spines['top'].set_visible(False)
 axarr[3,0].spines['right'].set_visible(False)
 axarr[3,0].spines['bottom'].set_position('zero')
-axarr[3,0].set_ylim(-2.5, 1.5)
-axarr[3,0].set_yticks([-2, 0])
+axarr[3,0].set_ylim(-1, 0.5)
+axarr[3,0].set_yticks([-1, 0])
 
 ### Panel H ###
-axarr[3,1].plot(t, Na_de-Na_de[0], zorder=10)
-axarr[3,1].plot(t, K_de-K_de[0], zorder=10)
-axarr[3,1].plot(t, Cl_de-Cl_de[0], zorder=10)
-axarr[3,1].plot(t, Ca_de-Ca_de[0], zorder=10)
-axarr[3,1].set_title('$\Delta \mathrm{[k]_{de}}$')
+axarr[3,1].plot(t, Ca_si-Ca_si[0], ':', zorder=11)
+axarr[3,1].plot(t, Ca_se-Ca_se[0], zorder=10)
+axarr[3,1].plot(t, Ca_di-Ca_di[0], zorder=9)
+axarr[3,1].plot(t, Ca_de-Ca_de[0], zorder=9)
+axarr[3,1].set_title('$\Delta\mathrm{[Ca^{2+}]}$')
 axarr[3,1].set_ylabel('mM')
 axarr[3,1].spines['top'].set_visible(False)
 axarr[3,1].spines['right'].set_visible(False)
 axarr[3,1].spines['bottom'].set_position('zero')
-axarr[3,1].set_ylim(-2.5, 1.5)
-axarr[3,1].set_yticks([-2, 0])
+axarr[3,1].set_ylim(-0.2, 0.1)
+axarr[3,1].set_yticks([-0.2, 0])
 
 ### Panel I ###
-axarr[4,0].plot(t, (E_Na_s-E_Na_s[0])*1000, zorder=10)
-axarr[4,0].plot(t, (E_K_s-E_K_s[0])*1000, zorder=10)
-axarr[4,0].plot(t, (E_Cl_s-E_Cl_s[0])*1000, zorder=10)
-axarr[4,0].plot(t, (E_Ca_s-E_Ca_s[0])*1000, zorder=10)
+l1 = axarr[4,0].plot(t, (E_Na_s-E_Na_s[0])*1000, zorder=10)[0]
+l2 = axarr[4,0].plot(t, (E_K_s-E_K_s[0])*1000, zorder=10)[0]
+l3 = axarr[4,0].plot(t, (E_Cl_s-E_Cl_s[0])*1000, zorder=10)[0]
+l4 = axarr[4,0].plot(t, (E_Ca_s-E_Ca_s[0])*1000, zorder=10)[0]
 axarr[4,0].set_title('$\Delta E\mathrm{_{k,s}}$')
 axarr[4,0].set_ylabel('mV')
 axarr[4,0].spines['top'].set_visible(False)
 axarr[4,0].spines['right'].set_visible(False)
 axarr[4,0].spines['bottom'].set_position('zero')
-axarr[4,0].set_ylim(-2, 6)
+axarr[4,0].set_ylim(-2, 5)
+fig.legend([l1, l2, l3, l4], ['$\mathrm{Na^+}$', '$\mathrm{K^+}$', '$\mathrm{Cl^-}$', '$\mathrm{Ca^{2+}}$'], \
+    loc=(0.40,0.31), ncol=2, fontsize='small', handlelength=0.8, handletextpad=0.4, columnspacing=0.4)
 
 ### Panel J ###
-axarr[4,1].plot(t, (E_Na_d-E_Na_d[0])*1000, zorder=10)
+axarr[4,1].plot(t, (E_Na_d-E_Na_d[0])*1000, zorder=11)
 axarr[4,1].plot(t, (E_K_d-E_K_d[0])*1000, zorder=10)
 axarr[4,1].plot(t, (E_Cl_d-E_Cl_d[0])*1000, zorder=10)
 axarr[4,1].plot(t, (E_Ca_d-E_Ca_d[0])*1000, zorder=10)
@@ -186,11 +188,11 @@ axarr[5,1].set_xticks([0, 10, 20, 30, 40, 50, 60])
 panel = np.array([['A', 'B'], ['C', 'D'], ['E', 'F'], ['G', 'H'], ['I', 'J'], ['K', 'L']])
 for i in range(0,6):
     for j in range(0,2):
-        if i == 3 and j == 1:
+        if i == 3 and j == 1 or i==4 and j==1:
             axarr[i,j].text(0.13, 1.35, panel[i,j], transform=axarr[i,j].transAxes, fontsize=16, fontweight='bold', va='top', ha='right')
         else:
             axarr[i,j].text(-0.1, 1.35, panel[i,j], transform=axarr[i,j].transAxes, fontsize=16, fontweight='bold', va='top', ha='right')
 
 fig.align_ylabels(axarr)
 plt.tight_layout()
-plt.savefig('figures_pdf/figure3.pdf', dpi=300)
+plt.savefig('figure3.eps', dpi=600)
