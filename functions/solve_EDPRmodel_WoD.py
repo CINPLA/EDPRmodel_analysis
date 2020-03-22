@@ -24,6 +24,9 @@ def solve_EDPRmodel_WoD(t_dur, alpha):
     filename = pkg_resources.resource_filename('data', 'initial_values/initial_values.npz')
     data = np.load(filename)
 
+    phi_sm = data['phi_sm']
+    phi_dm = data['phi_dm']
+
     Na_si0 = data['Na_si']
     Na_se0 = data['Na_se']
     K_si0 = data['K_si']
@@ -42,13 +45,15 @@ def solve_EDPRmodel_WoD(t_dur, alpha):
     Ca_di0 = data['Ca_di']
     Ca_de0 = data['Ca_de']
 
-    res_i = -68e-3*3e-2*616e-12/(1437e-18*9.648e4)
-    res_e = -68e-3*3e-2*616e-12/(718.5e-18*9.648e4)
+    res_si = phi_sm*3e-2*616e-12/(1437e-18*9.648e4)
+    res_se = phi_sm*3e-2*616e-12/(718.5e-18*9.648e4)
+    res_di = phi_dm*3e-2*616e-12/(1437e-18*9.648e4)
+    res_de = phi_dm*3e-2*616e-12/(718.5e-18*9.648e4)
 
-    X_si0 = Na_si0 + K_si0 - Cl_si0 + 2*Ca_si0 - res_i
-    X_se0 = Na_se0 + K_se0 - Cl_se0 + 2*Ca_se0 + res_e
-    X_di0 = Na_di0 + K_di0 - Cl_di0 + 2*Ca_di0 - res_i
-    X_de0 = Na_de0 + K_de0 - Cl_de0 + 2*Ca_de0 + res_e
+    X_si0 = Na_si0 + K_si0 - Cl_si0 + 2*Ca_si0 - res_si
+    X_se0 = Na_se0 + K_se0 - Cl_se0 + 2*Ca_se0 + res_se
+    X_di0 = Na_di0 + K_di0 - Cl_di0 + 2*Ca_di0 - res_di
+    X_de0 = Na_de0 + K_de0 - Cl_de0 + 2*Ca_de0 + res_de
 
     n0 = data['n']
     h0 = data['h']
@@ -57,7 +62,7 @@ def solve_EDPRmodel_WoD(t_dur, alpha):
     q0 = data['q']
     z0 = data['z']
     
-    init_cell = EDPRmodel(T, Na_si0, Na_se0, Na_di0, Na_de0, K_si0, K_se0, K_di0, K_de0, Cl_si0, Cl_se0, Cl_di0, Cl_de0, Ca_si0, Ca_se0, Ca_di0, Ca_de0, X_si0, X_se0, X_di0, X_de0, alpha, 0.01, 0.01, n0, h0, s0, c0, q0, z0)
+    #init_cell = EDPRmodel(T, Na_si0, Na_se0, Na_di0, Na_de0, K_si0, K_se0, K_di0, K_de0, Cl_si0, Cl_se0, Cl_di0, Cl_de0, Ca_si0, Ca_se0, Ca_di0, Ca_de0, X_si0, X_se0, X_di0, X_de0, alpha, 0.01, 0.01, n0, h0, s0, c0, q0, z0)
     #print_initial_values(init_cell)
 
     def dkdt(t,k):

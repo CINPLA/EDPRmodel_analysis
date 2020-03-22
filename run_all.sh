@@ -2,6 +2,10 @@ echo "Creating data for Figure 3..."
 python3 figure3.py
 echo "Figure 3 done."
 
+echo "Creating data for Figure 4..."
+python3 figure4.py
+echo "Figure 3 done."
+
 echo "Creating data for Figure 5..."
 python3 figure5_PR_weak.py
 python3 figure5_PR_strong.py
