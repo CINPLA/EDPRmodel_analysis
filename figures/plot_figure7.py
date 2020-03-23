@@ -87,7 +87,7 @@ axin2.set_ylim(-50, 300)
 
 ### Panel C ###
 ax3.plot(t, phi_sm, ls='-', color='k')
-ax3.set_title('edPR $\phi\mathrm{^{sm}}$')
+ax3.set_title('edPR $\phi\mathrm{_{sm}}$')
 ax3.set_yticks([-65, 0])
 ax3.set_xlim(10,22)
 ax3.set_ylim(-75, 25)
