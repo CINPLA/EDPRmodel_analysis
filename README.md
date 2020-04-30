@@ -1,6 +1,7 @@
 # An electrodiffusive, ion conserving Pinsky-Rinzel model with homeostatic mechanisms
 
-This code was used to produce the results presented in Sætra et al. 202X: [link]
+ This code was used to produce the results presented in Sætra et al. 2020: [An electrodiffusive, ion conserving Pinsky-Rinzel model with homeostatic mechanisms](https://doi.org/10.1371/journal.pcbi.1007661
+).
 
 # Installation
 
