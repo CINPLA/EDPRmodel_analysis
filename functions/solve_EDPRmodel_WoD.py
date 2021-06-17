@@ -71,7 +71,7 @@ def solve_EDPRmodel_WoD(t_dur, alpha):
 
         my_cell = EDPRmodel(T, Na_si, Na_se, Na_di, Na_de, K_si, K_se, K_di, K_de, Cl_si, Cl_se, Cl_di, Cl_de, Ca_si, Ca_se, Ca_di, Ca_de, X_si, X_se, X_di, X_de, alpha, 0.01, 0.01, n, h, s, c, q, z)
         my_cell.rho = 0.
-        my_cell.tau = 0.
+        my_cell.U_Cadec = 0.
 
         dNadt_si, dNadt_se, dNadt_di, dNadt_de, dKdt_si, dKdt_se, dKdt_di, dKdt_de, dCldt_si, dCldt_se, dCldt_di, dCldt_de, \
             dCadt_si, dCadt_se, dCadt_di, dCadt_de, dXdt_si, dXdt_se, dXdt_di, dXdt_de = my_cell.dkdt()

@@ -11,7 +11,7 @@ in the terminal:
 python setup.py install
 ```
 
-Requirements are given in `requirements.txt` and can be installed by the following command:
+Requirements are given in requirements.txt and can be installed by the following command:
 ```bash
 pip install -r requirements.txt
 ```
@@ -28,3 +28,9 @@ run `bash run_all.sh`. Note that this might run for a couple of days on a normal
 `bash plot_all.sh` from the folder named figures.
 
 If you have problems reading the initial_values.npz-file, install git lfs and try `git-lfs pull`.
+
+# Errata
+
+In a previous version of this code, U_Cadec was not set to zero in functions/solve_EDPRmodel_WoD.py,
+which is needed to reproduce Figure 8 of the paper (see figure caption). This is now corrected. 
+Many thanks to Johanna Marstrander for making us aware of this error. 
