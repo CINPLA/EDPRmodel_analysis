@@ -5,5 +5,5 @@ python-dateutil==2.8.1
 pyparsing==2.4.6
 numpy==1.18.1
 six==1.14.0
-setuptools==45.0.0
+setuptools==65.5.1
 scipy==1.4.1
